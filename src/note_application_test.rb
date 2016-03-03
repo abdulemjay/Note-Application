@@ -32,6 +32,10 @@ RSpec.describe "NotesApplication" do
      expect {NotesApplication.new(nil)}.to raise_error "Please enter valid author name"
     end
 
+    it "should test for not a string" do
+     expect {NotesApplication.new([1,2,3])}.to raise_error "Please enter valid author name"
+    end
+
   end
 
   context 'checks for several instances of initialize method' do 

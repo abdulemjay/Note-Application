@@ -1,8 +1,11 @@
 <h4 align="center">Andela Nigeria XV Bootcamp Assignment by JAMIU Abdulmujeeb(Emjay)</h4>
 <br>
 <h3>Quality Assurance</h3>
-<a href="https://codeclimate.com/github/abdulemjay/Note-Application"> <img src="https://codeclimate.com/github/abdulemjay/Note-Application/badges/gpa.svg" />  <img src="https://codeclimate.com/github/abdulemjay/Note-Application/badges/issue_count.svg" />  <img src="https://codeclimate.com/github/abdulemjay/Note-Application/badges/coverage.svg" />  </a>
-
+<a href="https://codeclimate.com/github/abdulemjay/Note-Application">
+<img src="https://codeclimate.com/github/abdulemjay/Note-Application/badges/gpa.svg" />
+<img src="https://codeclimate.com/github/abdulemjay/Note-Application/badges/issue_count.svg" />
+<a href="https://codeclimate.com/github/abdulemjay/Note-Application/coverage"><img src="https://codeclimate.com/github/abdulemjay/Note-Application/badges/coverage.svg" />
+<a href="https://travis-ci.org/abdulemjay/Note-Application"><img src="https://travis-ci.org/abdulemjay/Note-Application.svg?branch=master">
 <a href='https://semaphoreci.com/abdulemjay/note-application'> <img src='https://semaphoreci.com/api/v1/abdulemjay/note-application/branches/master/shields_badge.svg' alt='Build Status'></a>
 
 <br>

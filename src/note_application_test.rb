@@ -1,21 +1,19 @@
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.configure do |config|
-  config.path_prefix = "src" #the root of your Rails application relative to the repository root
-  #config.git_dir = "https://github.com/sheyooo/andela-project.git" #the relative or absolute location of your git root compared to where your tests are run
-  config.git_dir = `git rev-parse --show-toplevel`.strip
-end
-
-CodeClimate::TestReporter.start
+# require 'codeclimate-test-reporter'
+# CodeClimate::TestReporter.configure do |config|
+#   config.path_prefix = "src" #the root of your Rails application relative to the repository root
+#   #config.git_dir = "https://github.com/sheyooo/andela-project.git" #the relative or absolute location of your git root compared to where your tests are run
+#   config.git_dir = `git rev-parse --show-toplevel`.strip
+# end
+# CodeClimate::TestReporter.start
 
 
 
 require_relative 'note_application'
 include Emjay
 
-
 RSpec.describe "NotesApplication" do
-  context "author of the note instantiation" do
 
+  context "author of the note instantiation" do
     it "should test for empty author name" do
     expect {NotesApplication.new("")}.to raise_error "Please enter valid author name"
     end    
@@ -59,12 +57,16 @@ RSpec.describe "NotesApplication" do
 
   context 'checks if notes is an instance property' do
     newnote = NotesApplication.new("Emjay")
-
     it 'should returns notes list to be empty' do
         expect(newnote.list).to eq []
     end
-
   end
+
+    newnote = NotesApplication.new("Emjay")
+    newnote.create("Amity is the crib!")
+    it 'should returns the list' do
+        expect(newnote.list).to eq ["Amity is the crib!"]
+    end
 
   context "Checks if method" do
     newauthor = NotesApplication.new("Emjay")
@@ -115,7 +117,6 @@ RSpec.describe "NotesApplication" do
     it 'set should return note at index 2' do
         expect(newauthor.get(2)).to eq "Andela is wonderful"
     end
-
   end
 
 end

@@ -1,9 +1,8 @@
 require_relative 'src/note_application'
-include Emjay
 
 puts "Welcome! Please enter your name"
 author = gets.chomp
-note = NotesApplication.new(author)
+note = Emjay::NotesApplication.new(author)
 menu = true
 while menu
   puts "\nEnter 1 to 7"

@@ -27,7 +27,7 @@ module Emjay
     
     def list
       @notes.each { |notecontent|
-        puts "Note ID: #{@notes.index(notecontent)}\n#{notecontent}\n\nBy Author #{@author}\n\n"
+        puts "Note ID: #{@notes.index(notecontent)}\n#{notecontent}\n\nBy Author: #{@author}\n\n"
       }
     end
     
@@ -40,12 +40,10 @@ module Emjay
     end
 
     def search(search_text)
-      puts "Showing results for search #{search_text}\n"
+      puts "\n****Showing results for search #{search_text}****\n"
       @notes.each do |notecontent|
-        if notecontent.include?(search_text)
-          puts "Note ID: #{@notes.index(notecontent)}\n#{notecontent}\n\nBy Author #{@author}\n"
-        else
-          raise "Search Keyword not found"
+        if notecontent.include? search_text
+          puts "Note ID: #{@notes.index(notecontent)}\n#{notecontent}\n\nBy Author: #{@author}\n\n"
         end
       end
     end

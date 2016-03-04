@@ -1,44 +1,44 @@
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.configure do |config|
-  config.path_prefix = "src" #the root of your Rails application relative to the repository root
-  #config.git_dir = "https://github.com/sheyooo/andela-project.git" #the relative or absolute location of your git root compared to where your tests are run
-  config.git_dir = `git rev-parse --show-toplevel`.strip
-end
-CodeClimate::TestReporter.start
+# require 'codeclimate-test-reporter'
+# CodeClimate::TestReporter.configure do |config|
+#   config.path_prefix = "src" #the root of your Rails application relative to the repository root
+#   #config.git_dir = "https://github.com/sheyooo/andela-project.git" #the relative or absolute location of your git root compared to where your tests are run
+#   config.git_dir = `git rev-parse --show-toplevel`.strip
+# end
+# CodeClimate::TestReporter.start
 
 
 
 require_relative 'note_application'
-include Emjay
+
 
 RSpec.describe "NotesApplication" do
 
   context "author of the note instantiation" do
     it "should test for empty author name" do
-    expect {NotesApplication.new("")}.to raise_error "Please enter valid author name"
+    expect {Emjay::NotesApplication.new("")}.to raise_error "Please enter valid author name"
     end    
       
     it "should test for integer" do
-     expect {NotesApplication.new(4)}.to raise_error "Please enter valid author name"
+     expect {Emjay::NotesApplication.new(4)}.to raise_error "Please enter valid author name"
     end  
 
     it "should test for float" do
-     expect {NotesApplication.new(1.4)}.to raise_error "Please enter valid author name"
+     expect {Emjay::NotesApplication.new(1.4)}.to raise_error "Please enter valid author name"
     end
 
     it "should test for nil" do
-     expect {NotesApplication.new(nil)}.to raise_error "Please enter valid author name"
+     expect {Emjay::NotesApplication.new(nil)}.to raise_error "Please enter valid author name"
     end
 
     it "should test for not a string" do
-     expect {NotesApplication.new([1,2,3])}.to raise_error "Please enter valid author name"
+     expect {Emjay::NotesApplication.new([1,2,3])}.to raise_error "Please enter valid author name"
     end
   end
 
   context 'checks for several instances of initialize method' do 
-    noteemjay = NotesApplication.new("Emjay")
-    notebukky = NotesApplication.new("Bukky")
-    noteyetty = NotesApplication.new("Yetty")
+    noteemjay = Emjay::NotesApplication.new("Emjay")
+    notebukky = Emjay::NotesApplication.new("Bukky")
+    noteyetty = Emjay::NotesApplication.new("Yetty")
 
     it 'should return author name Emjay' do
         expect(noteemjay.author).to eq 'Emjay'
@@ -54,14 +54,14 @@ RSpec.describe "NotesApplication" do
   end
 
   context 'checks if notes is an instance property' do
-    newnote = NotesApplication.new("Emjay")
+    newnote = Emjay::NotesApplication.new("Emjay")
     it 'should returns notes list to be empty' do
         expect(newnote.list).to eq []
     end
   end
 
   context "checks if there are contents in the list" do
-    newnote = NotesApplication.new("Emjay")
+    newnote = Emjay::NotesApplication.new("Emjay")
     newnote.create("Amity is the crib!")
     it 'should returns the list with the contents' do
         expect(newnote.list).to eq ["Amity is the crib!"]
@@ -69,11 +69,15 @@ RSpec.describe "NotesApplication" do
   end
 
   context "Checks if method" do
-    newauthor = NotesApplication.new("Emjay")
+    newauthor = Emjay::NotesApplication.new("Emjay")
     newauthor.create("Andela is all about Fellowship")
     newauthor.create("What an interesting Bootcamp")
     newauthor.create("Andela is wonderful")
     newauthor.create("Ruby is weird")
+
+    it 'search should return the search keyword' do
+    expect(newauthor.search("Andela")).to eq ["Andela is all about Fellowship", "What an interesting Bootcamp", "Andela is wonderful", "Ruby is weird"]
+    end
 
     it 'returns name of author' do 
         expect(newauthor.author).to eq "Emjay"
@@ -116,14 +120,6 @@ RSpec.describe "NotesApplication" do
 
     it 'set should return note at index 2' do
         expect(newauthor.get(2)).to eq "Andela is wonderful"
-    end
-
-    # it 'search should return the search keyword' do
-    #     expect(newauthor.search("Andela")).to eq ["Andela is all about Fellowship, Andela is wonderful"]
-    # end
-
-    it 'search should return not found' do
-        expect{newauthor.search("yoruba")}.to raise_error "Search Keyword not found"
     end
   end
 

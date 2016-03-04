@@ -33,7 +33,6 @@ RSpec.describe "NotesApplication" do
     it "should test for not a string" do
      expect {NotesApplication.new([1,2,3])}.to raise_error "Please enter valid author name"
     end
-
   end
 
   context 'checks for several instances of initialize method' do 
@@ -52,7 +51,6 @@ RSpec.describe "NotesApplication" do
     it 'should reutrn author name Yetty' do
         expect(noteyetty.author).to eq 'Yetty'
     end
-
   end
 
   context 'checks if notes is an instance property' do
@@ -62,11 +60,13 @@ RSpec.describe "NotesApplication" do
     end
   end
 
+  context "checks if there are contents in the list" do
     newnote = NotesApplication.new("Emjay")
     newnote.create("Amity is the crib!")
-    it 'should returns the list' do
+    it 'should returns the list with the contents' do
         expect(newnote.list).to eq ["Amity is the crib!"]
     end
+  end
 
   context "Checks if method" do
     newauthor = NotesApplication.new("Emjay")
@@ -116,6 +116,14 @@ RSpec.describe "NotesApplication" do
 
     it 'set should return note at index 2' do
         expect(newauthor.get(2)).to eq "Andela is wonderful"
+    end
+
+    # it 'search should return the search keyword' do
+    #     expect(newauthor.search("Andela")).to eq ["Andela is all about Fellowship, Andela is wonderful"]
+    # end
+
+    it 'search should return not found' do
+        expect{newauthor.search("yoruba")}.to raise_error "Search Keyword not found"
     end
   end
 

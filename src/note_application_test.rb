@@ -1,7 +1,7 @@
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.configure do |config|
   config.path_prefix = "src" #the root of your Rails application relative to the repository root
-  #config.git_dir = "https://github.com/sheyooo/andela-project.git" #the relative or absolute location of your git root compared to where your tests are run
+  #config.git_dir = "https://github.com/abdulemjay/note-application.git" #the relative or absolute location of your git root compared to where your tests are run
   config.git_dir = `git rev-parse --show-toplevel`.strip
 end
 CodeClimate::TestReporter.start
@@ -108,12 +108,13 @@ RSpec.describe "NotesApplication" do
     end
 
     it 'edit edit the the note given the index and the new content' do
-        expect {newauthor.edit(0,"Who says Ruby is interesting")}.to change {newauthor.get(0)}. from("Andela is all about Fellowship").to("Who says Ruby is interesting")
+        expect {newauthor.edit(0,"Who says Ruby is interesting")}.to change {newauthor.get(0)}.from("Andela is all about Fellowship").to("Who says Ruby is interesting")
     end
 
     it 'delete raise error if note_id is a string' do
         expect {newauthor.delete("1")}.to raise_error "Note Id should be an Integer"
     end
+    
     it 'delete delete note at index 2' do
         expect {newauthor.delete(3)}.to change {newauthor.notes.length}.from(4).to(3)
     end

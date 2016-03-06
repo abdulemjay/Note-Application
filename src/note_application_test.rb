@@ -10,7 +10,6 @@ CodeClimate::TestReporter.start
 
 require_relative 'note_application'
 
-
 RSpec.describe "NotesApplication" do
 
   context "author of the note instantiation" do

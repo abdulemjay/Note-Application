@@ -4,6 +4,7 @@ puts "Welcome! Please enter your name"
 author = gets.chomp
 note = Emjay::NotesApplication.new(author)
 menu = true
+
 while menu
   puts "\nEnter 1 to 7"
   puts "1 to create"
@@ -15,7 +16,6 @@ while menu
   puts "7 to exit\n"
 
   input = gets.chomp.to_i
-  
   case input 
     when 1
       puts "\nEnter content of note you want to create\n"   
@@ -51,6 +51,5 @@ while menu
     when 7
       menu= false
 
-  end
-    
+  end   
 end
